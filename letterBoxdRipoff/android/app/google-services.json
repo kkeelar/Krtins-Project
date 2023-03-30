@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "145299167499",
+    "firebase_url": "https://jukeboxd-demo-3-default-rtdb.firebaseio.com",
+    "project_id": "jukeboxd-demo-3",
+    "storage_bucket": "jukeboxd-demo-3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145299167499:android:17ac535d3a9c7350d1ea0e",
+        "android_client_info": {
+          "package_name": "com.example.flutter_jukebox_demo_4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145299167499-03nk43c0cqg6t4viftuti9odim2qjcmv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA84wunnwO0KIPEswm-yw7aGtsy75HBwss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145299167499-03nk43c0cqg6t4viftuti9odim2qjcmv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "145299167499-0gp7vks51f6e9b11r7tafqmtici494a6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterJukeboxdDemo3"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
