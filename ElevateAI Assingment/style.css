@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5dc;
+}
+
+header, footer {
+    text-align: center;
+    padding: 10px;
+}
+
+header h1 {
+    color: rgb(107, 100, 100)
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+textarea {
+    width: 500px;
+    height: 250px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    resize: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#summaryOutput {
+    margin-top: 20px;
+    width: 600px;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+}
+.loader {
+    border: 5px solid #f3f3f3; /* Light grey border */
+    border-top: 5px solid #3498db; /* Blue border */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loadingIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; /* Adjust height to fit the spinner */
+    margin-top: 20px; /* Add margin to the top */
+}
+
+
+
+footer {
+    padding: 20px;
+}
