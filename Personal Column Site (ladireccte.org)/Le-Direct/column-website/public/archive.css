@@ -1,0 +1,489 @@
+/* Navbar styles */
+html { visibility:hidden; }
+
+
+body {
+    font-family: "DM Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #773344;
+    color: #333;
+}
+#loading {
+    background-color: #773344;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #ef233c;
+    position: fixed;
+    text-align: center;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* Navbar title */
+.title {
+    font-family: "Jacquarda Bastarda 9", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #edf2f4;
+    font-size: 4vh;
+    margin: 0;
+    text-align: center;
+    font-size: 3rem;
+}
+
+/* Left and right nav links */
+.navLinks-left, .navLinks-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Archive buttons */
+.archive-button-left, .archive-button-right {
+    font-family: "Jacquarda Bastarda 9", serif;
+    font-size: 1.5rem;
+    color: #edf2f4;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.archive-button-left:hover, .archive-button-right:hover {
+    text-decoration: underline;
+}
+
+.content{ 
+    overflow: hidden;
+    height: auto;
+}
+
+
+.bio-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: fill;
+    margin-top: 2.5rem;
+    margin-right: 1rem;
+    border: 2px dashed black; /* Add dashed black border */
+    padding: .25rem;
+}
+
+.panel {
+    width: 45%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #FEFEFA; /* Off white cream/beige color */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* More noticeable box shadow */
+    border-radius: 10px;
+    padding-top: 7rem;
+    min-height: calc(100vh - 60px); /* Adjust this value to match the navbar height */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+
+.bio-section {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.bio-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.bio-name {
+    font-family: "DotGothic16", sans-serif;
+    font-size: 2rem;
+    color: #ef233c;
+    margin-bottom: 0.5rem;
+}
+
+.bio-text {
+    font-family: "DM Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+}
+
+
+.separator {
+    text-align: center;
+    color: #ef233c;
+    font-size: 3rem;
+    margin: 0 0; /* Adjust as needed for spacing */
+    letter-spacing: 0.2rem; /* Adjust for spacing between periods */
+    font-family: "Jacquarda Bastarda 9", serif; 
+}
+
+
+.article1 {
+    grid-area: article1;
+    margin-left: 2rem;
+}
+
+.article2 {
+    grid-area: article2;
+    margin-right: 2rem;
+}
+
+.article-card {
+    background: #FEFEFA;
+    padding-top: 2rem;
+    padding: 1rem;
+    border-top: 2.5px dashed #FF91AF;
+    border-bottom: 2.5px dashed #FF91AF;
+    /*transition: border 0.3s ease-in-out, border-radius 0.3s ease-in-out;  Smooth transition */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 110%; /* Adjust the width to make it wider */
+    height: auto; /* Adjust the height to make it shorter */
+    margin: 1rem 0; /* Center the card vertically */
+    box-sizing: border-box;
+}
+
+.article-card:hover {
+    border-top: 2.5px dashed #ef233c; /* Dashed border on hover */
+    border-bottom: 2.5px dashed #ef233c; /* Dashed border on hover */
+    border-radius: 0px; /* Oval border on hover */
+    
+}
+
+.article-title {
+    font-family: "DM Mono", monospace;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 0.1rem;
+    padding-right: 1rem;
+}
+
+.article-excerpt {
+    font-family: "DM Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.8rem;
+    color: #555;
+    margin-bottom: .5rem;
+
+    padding-right: 1rem;
+}
+
+.article-date {
+    font-family: "DM Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 0.1rem; /* Adjust space below date */
+}
+
+.article-author {
+    font-family: "DM Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 0.1rem; /* Adjust space below author */
+}
+
+
+.article-image {
+    border: 2px  #FF91AF; /* Red outlined box */
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85px; /* Adjust as needed */
+    height: 85px; /* Adjust as needed */
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.articles-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center cards horizontally */
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.article-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%; /* Ensure the column takes full width */
+    align-items: center; /* Center cards horizontally */
+}
+
+
+/* Styling for column detail pages */
+/* Title, author name, date */
+.panel .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.panel .header .text-info {
+    flex-grow: 1;
+}
+
+/* Individual text styling */
+#column-title {
+    font-family: "DM Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+#column-date {
+    font-family: "DM Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: .75rem;
+    color: #333;
+}
+
+#column-author {
+    font-family: "DM Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.8rem;
+}
+
+#column-content {
+    font-family: "DM Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+/* Image on the right with red dashed outline */
+.panel .header img {
+    margin-top: 20px;
+    width: 80px;
+    height: 80px;
+    border: 2px dashed #FF91AF;
+    margin-left: 20px;
+    object-fit: contain;
+    padding: .5rem
+}
+
+.article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: .5rem;
+
+}
+
+
+
+
+/* For screens up to 1024px */
+@media (max-width: 1024px) {
+    .navbar {
+        grid-template-columns: 1fr auto 1fr;
+        padding: 0.5rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .archive-button-left, .archive-button-right {
+        font-size: 1.2rem;
+    }
+
+    .content .panel {
+        width: 75%; /* Nearly full width, with a sliver of background visible */
+        padding-top: 0rem;
+    }
+
+    .bio-section {
+        margin-top: 4rem;
+        padding: 2rem;
+        padding-bottom: 0rem;
+    }
+
+    .panel .header {
+        flex-direction: row; /* Keep row layout with image on the right */
+        align-items: flex-start; /* Align items to the top */
+        text-align: left; /* Keep text aligned to the left */
+        padding-top: 5rem;
+    }
+
+}
+
+/* For screens up to 768px */
+@media (max-width: 768px) {
+    .navbar {
+        grid-template-columns: auto 1fr auto;
+        padding: 1rem;
+    }
+    .title {
+        font-size: 1.95vh;
+        margin-left: 1rem;
+    }
+    .archive-button-left, .archive-button-right {
+        font-size: 0.55rem;
+    }
+
+    .content .panel {
+        width: 90%; /* Nearly full width, with a sliver of background visible */
+        padding-top: 0rem;
+    }
+
+    .bio-section {
+        flex-direction: row; /* Keep row layout */
+        align-items: flex-start; /* Align items to the start */
+        text-align: left; /* Ensure text is aligned to the left */
+        width: 100%; /* Make the bio section take up full width */
+        padding-left: 0rem; /* Push the entire section slightly to the left */
+        padding-right: 0rem; /* Ensure some padding on the right as well */
+    }
+
+    .bio-image {
+        width: 80px;
+        height: 80px;
+        margin-right: 1rem; /* Maintain margin on the right */
+        margin-left: 0; /* Ensure no margin-left */
+        border: 2px dashed black; /* Ensure border remains */
+    }
+
+    .bio-details {
+        width: calc(100% - 10px); /* Increase width of the text area */
+        max-width: 100%; /* Make the text area wider and adjust its width */
+    }
+
+    .bio-name {
+        font-size: 1.5rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .bio-text {
+        font-size: 0.65rem;
+        margin: 0;
+        line-height: 1.4; /* Adjust line height if needed */
+    }
+
+    .separator {
+        font-size: 2.5rem; /* Further reduce font size for mobile */
+        letter-spacing: 2rem; /* Further reduce letter spacing */
+        margin: 1rem 0; /* Adjust margin for spacing */
+        overflow: clip;
+    }
+
+    .article-card {
+        width: 120%; /* Maintain full width but keep the original layout */
+        padding: 0.75rem;
+    }
+
+    .article-title {
+        font-size: 1rem;
+    }
+
+    .article-excerpt, .article-date, .article-author {
+        font-size: 0.7rem;
+    }
+
+    .article-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .panel .header {
+        flex-direction: row; /* Keep row layout with image on the right */
+        align-items: flex-start; /* Align items to the top */
+        text-align: left; /* Keep text aligned to the left */
+        padding-top: 5rem;
+    }
+
+    .panel .header .text-info {
+        flex-grow: 1; /* Ensure text takes up as much space as needed */
+        margin-bottom: 0; /* Remove any additional bottom margin */
+    }
+
+    .panel .header img {
+        width: 60px; /* Reduce the image size for mobile */
+        height: 60px;
+        margin-left: 1rem; /* Maintain spacing between text and image */
+        margin-top: 1.5rem; /* Remove any top margin */
+
+    }
+
+    #column-title {
+        font-size: 1.5rem; /* Slightly reduce the title size */
+    }
+
+    #column-date, #column-author {
+        font-size: 0.75rem; /* Reduce the font size for date and author */
+        color: #555; /* Adjust color if needed */
+    }
+
+    .separator{
+        font-size: 2rem; /* Further reduce font size for mobile */
+        letter-spacing: 2rem; /* Further reduce letter spacing */
+        margin: 0rem 0rem; /* Adjust margin for spacing */
+        overflow: hidden;
+        margin-left: .5rem;
+    }
+
+    #column-content {
+        font-size: 1rem; /* Reduce the content text size slightly */
+        margin-top: 1rem; /* Maintain spacing at the top */
+        padding: 0 0rem; /* Add padding to ensure text doesn't touch the edges */
+    }
+
+    .panel {
+        width: 100%; /* Make the panel take up full width */
+        padding: 1rem; /* Adjust padding to fit better on mobile */
+    }
+}
+
+
+
+
+
+
+
+a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color from parent */
+}
+
+

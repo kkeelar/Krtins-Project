@@ -1,0 +1,11 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /images/{allPaths=**} {
+      allow read;
+      allow write: if request.auth != null && 
+        (request.auth.uid == 'gDR7XP2irdOc9rG2J2K9G2Mojty2' || 
+         request.auth.uid == 'NpUxiPlf7dgkdxw9u3jQajBfBhD2');
+    }
+  }
+}

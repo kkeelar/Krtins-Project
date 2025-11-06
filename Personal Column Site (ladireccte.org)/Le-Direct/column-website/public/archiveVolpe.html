@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M30BNRBELW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M30BNRBELW');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=PT+Mono&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Imbue:opsz,wght@10..100,100..900&family=Instrument+Serif:ital@0;1&family=Jacquarda+Bastarda+9&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Archive</title>
+    <link rel="stylesheet" href="archive.css">
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    
+    <div id="loading"></div>
+    <nav class="navbar">
+        <div class="navLinks-left">
+            <a href="archiveVolpe.html" class="archive-button-left">Flyte's Archive</a>
+        </div>
+        <div class="navText">
+            <a href="index.html" class="title">-|---La Direccte---|-</a>
+        </div>
+        <div class="navLinks-right">
+            <a href="archiveKrtin.html" class="archive-button-right">Vandelay's Archive</a>
+        </div>
+    </nav>
+    <div class="content">
+
+        <div class="panel">
+            <div class="bio-section">
+                <img src="fox.svg" alt="Flyte's image" class="bio-image">
+                <div class="bio-details">
+                    <h2 class="bio-name">Flyte</h2>
+                    <p class="bio-text">I'd prefer to liken this to some great hall of memories but could more accurately call it the dollar bin at the record store. You've probably never heard of it for a reason but there's a shot you'll find something you like.</div>
+            </div>
+            <div class="separator">.................................</div>
+
+            <div class="articles-section">
+                <div class="article-column" id="article-column">
+                    <!-- Articles will be injected here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        var firebaseConfig = {
+            apiKey: "AIzaSyBRttUjBL-BBVc1OlQOXRzImMRc66t6r1o",
+            authDomain: "ledirect-d1772.firebaseapp.com",
+            projectId: "ledirect-d1772",
+            storageBucket: "ledirect-d1772.appspot.com",
+            messagingSenderId: "109945265438",
+            appId: "1:109945265438:web:7e72bbc121e0cb529f7d0f",
+            measurementId: "G-M30BNRBELW"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const articleColumn = document.getElementById('article-column');
+            const querySnapshot = await db.collection('columnsJoe').orderBy('date', 'desc').get();
+            querySnapshot.forEach((doc) => {
+                const column = doc.data();
+                const date = new Date(column.date);
+                const options = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
+                const formattedDate = date.toLocaleDateString('en-US', options);
+
+                const articleCard = `
+                    <a href="column_detailJoe.html?id=${doc.id}" class="article-card border-animation">
+                        <div class="articleContents">
+                            <h3 class="article-title">${column.title}</h3>
+                            <p class="article-excerpt">${column.description}</p>
+                            <p class="article-date">${formattedDate}</p>
+                            <p class="article-author">${column.author}</p>
+                        </div>
+                        <div class="article-image">
+                            <img src="${column.imageUrl || 'default.jpg'}" alt="${column.title}">
+                        </div>
+                    </a>
+                `;
+                articleColumn.innerHTML += articleCard;
+                
+            });
+            document.getElementById('loading').style.display = 'none';
+        });
+
+        window.onload = function() {
+            
+        document.getElementsByTagName("html")[0].style.visibility = "visible";
+        
+        };
+    </script>
+</body>
+</html>

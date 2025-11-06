@@ -1,0 +1,12 @@
+# Ignore secrets and large dependency folders
+node_modules/
+node_modules 2/
+*.env
+*.json
+*.log
+__pycache__/
+.DS_Store
+
+
+
+

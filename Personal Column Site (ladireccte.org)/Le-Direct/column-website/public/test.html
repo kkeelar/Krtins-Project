@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Test</title>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <h1>Firestore Test</h1>
+    <div id="output"></div>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBRttUjBL-BBVc1OlQOXRzImMRc66t6r1o",
+            authDomain: "ledirect-d1772.firebaseapp.com",
+            projectId: "ledirect-d1772",
+            storageBucket: "ledirect-d1772.appspot.com",
+            messagingSenderId: "109945265438",
+            appId: "1:109945265438:web:7e72bbc121e0cb529f7d0f",
+            measurementId: "G-M30BNRBELW"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        db.collection('columns').get().then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                document.getElementById('output').innerHTML += `<p>${doc.id} => ${doc.data().title}</p>`;
+            });
+        }).catch(error => {
+            document.getElementById('output').innerHTML = `<p>Error: ${error.message}</p>`;
+        });
+    </script>
+</body>
+</html>
