@@ -1,10 +1,10 @@
-# 🧠 Krtin’s Project Portfolio
+# Krtin’s Project Portfolio
 
 Collection of selected software engineering projects demonstrating full-stack, automation, and data-driven development skills.
 
 ---
 
-## 📰 LaDireccte.org  
+## LaDireccte.org  
 **Tech:** React, Node.js, Firebase, GitHub Actions, Postgres  
 
 - Developed and deployed a responsive full-stack publication site with Firebase authentication and Postgres integration.  
@@ -12,7 +12,7 @@ Collection of selected software engineering projects demonstrating full-stack, a
 
 ---
 
-## 💼 JobBoard Platform  
+## JobBoard Platform  
 **Tech:** Django, Python, Leaflet, SQLite, Bootstrap  
 
 - Built a two-sided job marketplace with recruiter dashboards, one-click applications, and privacy controls.  
@@ -21,7 +21,7 @@ Collection of selected software engineering projects demonstrating full-stack, a
 
 ---
 
-## 🏀 March Madness Automation Bot  
+## March Madness Automation Bot  
 **Tech:** Python, Selenium, Docker, Proxy Rotation  
 
 - Automated NCAA bracket submissions using headless Selenium with rotating proxies.  
@@ -29,7 +29,7 @@ Collection of selected software engineering projects demonstrating full-stack, a
 
 ---
 
-## 📈 Tech Stack Highlights  
+## Tech Stack Highlights  
 **Languages:** Python, JavaScript, SQL, HTML/CSS  
 **Frameworks:** React, Django, Node.js  
 **Tools:** Firebase, Docker, GitHub Actions, Selenium, Postgres  
