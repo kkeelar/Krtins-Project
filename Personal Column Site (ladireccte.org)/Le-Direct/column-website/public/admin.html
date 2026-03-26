@@ -1,0 +1,231 @@
+
+<html lang="en">
+<head>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M30BNRBELW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M30BNRBELW');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Imbue:opsz,wght@10..100,100..900&family=Instrument+Serif:ital@0;1&family=Jacquarda+Bastarda+9&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+    <title>Admin Krtin</title>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-storage-compat.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navText">
+            <h1 class="title">-|------Le Direct Admin Vandelay------|-</h1>
+        </div>
+        <div class="navLinks">
+            <button id="logout-button">Logout</button>
+        </div>
+    </nav>
+    <div class="content">
+        <h2>Admin Page</h2>
+        <form id="column-form">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+            
+            <label for="author">Author:</label>
+            <select id="author" name="author" required>
+                <option value="Vandelay">Vandelay</option>
+            </select>
+            
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+            
+            <label for="content">Content:</label>
+            <div id="content" class="quill-editor"></div> <!-- Changed to div for Quill editor -->
+
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/png" required>
+            
+            <button type="submit" id="submit-button">Post Column</button>
+            <button type="button" id="cancel-edit-button" style="display: none;">Cancel Edit</button>
+        </form>
+        <div id="columns">
+            <h2>Existing Columns</h2>
+            <ul id="columns-list"></ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
+    <script>
+        var quill = new Quill('#content', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['link', 'blockquote', 'code-block', 'image'],
+                    [{ list: 'ordered' }, { list: 'bullet' }]
+                ]
+            }
+        });
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyBRttUjBL-BBVc1OlQOXRzImMRc66t6r1o",
+            authDomain: "ledirect-d1772.firebaseapp.com",
+            projectId: "ledirect-d1772",
+            storageBucket: "ledirect-d1772.appspot.com",
+            messagingSenderId: "109945265438",
+            appId: "1:109945265438:web:7e72bbc121e0cb529f7d0f",
+            measurementId: "G-M30BNRBELW"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user || user.email !== 'kkeelar1@gmail.com') {
+                window.location.href = 'login.html';
+            }
+        });
+
+        document.getElementById('logout-button').addEventListener('click', function() {
+            firebase.auth().signOut().then(() => {
+                window.location.href = 'login.html';
+            });
+        });
+
+        var db = firebase.firestore();
+        var storage = firebase.storage();
+
+        document.getElementById('column-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const date = document.getElementById('date').value;
+            const author = document.getElementById('author').value;
+            const description = document.getElementById('description').value;
+            const content = quill.root.innerHTML;
+            const image = document.getElementById('image').files[0];
+
+            const columnId = document.getElementById('column-form').getAttribute('data-id');
+
+            const confirmed = confirm('Are you sure you want to ' + (columnId ? 'edit' : 'post') + ' this column?');
+            if (confirmed) {
+                try {
+                    let imageUrl = null;
+
+                    if (image) {
+                        const imageRef = storage.ref('images/' + image.name);
+                        await imageRef.put(image);
+                        imageUrl = await imageRef.getDownloadURL();
+                    }
+
+                    const column = {
+                        title,
+                        date,
+                        author,
+                        description,
+                        content,
+                        ...(imageUrl && { imageUrl })  // Only include imageUrl if a new image was uploaded
+                    };
+
+                    if (columnId) {
+                        // Update existing column
+                        await db.collection('columns').doc(columnId).update(column);
+                        alert('Column edited successfully');
+                    } else {
+                        // Add new column
+                        await db.collection('columns').add(column);
+                        alert('Column posted successfully');
+                    }
+
+                    document.getElementById('column-form').reset();
+                    quill.root.innerHTML = '';
+                    document.getElementById('column-form').removeAttribute('data-id');
+                    document.getElementById('submit-button').textContent = 'Post Column';
+                    document.getElementById('cancel-edit-button').style.display = 'none';
+                    fetchColumns();
+                } catch (error) {
+                    alert('An error occurred: ' + error.message);
+                }
+            }
+        });
+
+        document.getElementById('cancel-edit-button').addEventListener('click', () => {
+            document.getElementById('column-form').reset();
+            quill.root.innerHTML = '';
+            document.getElementById('column-form').removeAttribute('data-id');
+            document.getElementById('submit-button').textContent = 'Post Column';
+            document.getElementById('cancel-edit-button').style.display = 'none';
+        });
+
+        async function fetchColumns() {
+            const columnsList = document.getElementById('columns-list');
+            columnsList.innerHTML = '';
+            try {
+                const snapshot = await db.collection('columns').get();
+                snapshot.forEach(doc => {
+                    const column = doc.data();
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <div>
+                            <strong>${column.title}</strong> - ${column.author} - ${column.date}
+                            <p>${column.description}</p>
+                            <img src="${column.imageUrl}" alt="${column.title}" style="width: 100px; height: auto;">
+                            <button onclick="editColumn('${doc.id}')">Edit</button>
+                            <button onclick="deleteColumn('${doc.id}')">Delete</button>
+                        </div>
+                    `;
+                    columnsList.appendChild(listItem);
+                });
+            } catch (error) {
+                alert('An error occurred while fetching columns: ' + error.message);
+            }
+        }
+
+        async function deleteColumn(id) {
+            const confirmed = confirm('Are you sure you want to delete this column?');
+            if (confirmed) {
+                const docRef = db.collection('columns').doc(id);
+                try {
+                    await docRef.delete();
+                    alert('Column deleted successfully');
+                    fetchColumns();
+                } catch (error) {
+                    alert('An error occurred while deleting the column: ' + error.message);
+                }
+            }
+        }
+
+        async function editColumn(id) {
+            try {
+                const docRef = db.collection('columns').doc(id);
+                const doc = await docRef.get();
+                if (doc.exists) {
+                    const column = doc.data();
+                    document.getElementById('title').value = column.title;
+                    document.getElementById('date').value = column.date;
+                    document.getElementById('author').value = column.author;
+                    document.getElementById('description').value = column.description;
+                    quill.root.innerHTML = column.content;
+                    document.getElementById('column-form').setAttribute('data-id', id);
+            document.getElementById('submit-button').textContent = 'Edit Column';
+            document.getElementById('cancel-edit-button').style.display = 'inline-block';
+        } else {
+            alert('No such column!');
+        }
+    } catch (error) {
+        alert('An error occurred while fetching the column: ' + error.message);
+    }
+}
+
+        fetchColumns();
+    </script>
+</body>
+</html>

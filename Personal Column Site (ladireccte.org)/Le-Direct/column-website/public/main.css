@@ -1,0 +1,703 @@
+/* Navbar styles */
+html { visibility:hidden; }
+
+.background {
+
+    background-color: #edf2f4;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #ef233c;
+    position: fixed;
+    text-align: center;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* Navbar title */
+.title {
+    font-family: "Jacquarda Bastarda 9", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #edf2f4;
+    font-size: 4vh;
+    margin: 0;
+    text-align: center;
+    font-size: 3rem;
+}
+
+/* Left and right nav links */
+.navLinks-left, .navLinks-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Archive buttons */
+.archive-button-left, .archive-button-right {
+    font-family: "Jacquarda Bastarda 9", serif;
+    font-size: 1.5rem;
+    color: #edf2f4;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.archive-button-left:hover, .archive-button-right:hover {
+    text-decoration: underline;
+}
+
+
+/* Morse code and teaser text styles */
+.vmorse, .kmorse {
+    text-align: center;
+    font-family: "Jacquarda Bastarda 9", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #ef233c;
+    font-size: 8vh;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    margin-right: 0; /* Remove any margins that might be pushing it to the right */
+
+}
+
+/* Teaser text */
+#teasertext {
+    margin-top: 24vh;
+    margin-bottom: 12vh;
+    color: #2b2d42;
+    font-family: "DotGothic16", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 11vh; /* Base font size for larger screens */
+    overflow: visible; /* Ensure no clipping */
+    height: 200px;
+}
+
+
+
+.firstText {
+    grid-area: firstText;
+    text-align: center;
+    align-items: center;
+    overflow: visible; /* Ensure no clipping */
+    margin: 0; 
+    height: static; /* Ensure container adjusts to content */
+}
+
+
+.teaser {
+    margin:auto;
+}
+
+
+.underscore {
+    display:inline-block;
+       position:relative;
+       top:-0.14em;
+       left:10px;
+     }
+    
+
+    
+/* Ensure Morse code text is vertical */
+#vtext, #ktext {
+
+        transform: rotate(90deg); /* Ensure text is upright */
+        font-size: inherit; /* Ensure font size is inherited from parent */
+    }
+
+
+.dashes1{
+    grid-area: dash1;
+}
+
+.dashes2{
+    grid-area: dash2;
+}
+
+/* Dashes styles */
+.dashes1, .dashes2 {
+    margin-top: 2vh; /* Adjust top margin */
+    width: 100%;
+    overflow: hidden; /* Ensure no clipping */
+}
+.dashes1 img, .dashes2 img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.dots1, .dots2 {
+    display: none; 
+}
+
+/* Down arrow styles */
+.downarrow {
+    margin-top: 2rem; /* Adjust top margin */
+    height: 10vh; /* Increase height */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+    
+}
+
+.downarrow img {
+    width: auto;
+    height: 100%; /* Ensure full height */
+    margin: 0 auto;
+    padding: 0;
+    animation: bounce 2s infinite;
+    color: f4be32;
+}
+
+
+
+.content {
+    background-color: #edf2f4;
+    width: 100%;
+    height: auto;
+    padding-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr .20fr 1fr 1fr;
+    grid-auto-rows: max-content;
+    gap: 1rem; 
+    grid-template-areas: 
+        "vmorse firstText firstText firstText kmorse"
+        "dash1 dash1 image dash2 dash2"
+        "date date date date date"
+        "name1 name1 vertical-dots name2 name2" 
+        "article1 article1 vertical-dots article2 article2";
+    overflow: hidden;
+}
+
+.name1{
+    grid-area: name1;
+}
+
+.vertical-dots {
+    grid-area: vertical-dots;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    font-family: "Jacquarda Bastarda 9", serif; 
+}
+
+.horz-dots {
+    display: none;
+}
+
+
+.dots {
+    margin: 0;
+    line-height: 1; 
+    font-size: 4rem;
+    color: #ef233c;
+}
+
+.name2 {
+    grid-area: name2;
+}
+
+.name {
+    font-family: "DotGothic16", sans-serif;
+    font-size: 3rem;
+    font-weight: 200;
+    color: #2b2d42;
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: underline;
+    
+    
+}
+
+
+.article1 {
+    grid-area: article1;
+    margin-left: 2rem;
+}
+
+.article2 {
+    grid-area: article2;
+}
+
+.article-card {
+    background: #edf2f4;
+    padding: 1rem;
+    border: 2.5px dashed #edf2f4;
+    margin: 1rem;
+    margin-right: 2.5rem;
+    /*transition: border 0.3s ease-in-out, border-radius 0.3s ease-in-out;  Smooth transition */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.article-card:hover {
+    border: 2.5px dashed #ef233c; /* Dashed border on hover */
+    border-radius: 0px; /* Oval border on hover */
+    transform: translateY(-5px);
+    animation: dropShadow .3s 1 forwards;
+}
+
+.article-title {
+    font-family: 'Cousine', monospace;
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    padding-right: 1.75rem;
+}
+
+.article-excerpt {
+    font-family: 'Cousine', monospace;
+    font-size: 0.8rem;
+    color: #555;
+    margin-bottom: 1rem;
+    padding-right: 1rem;
+}
+
+.article-date {
+    font-family: 'Cousine', monospace;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+
+
+.article-image {
+    border: 2px dashed #000; /* Red outlined box */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.article-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 1024px) {
+    .navbar {
+        grid-template-columns: auto 1fr auto;
+        padding: 1rem;
+    }
+    .title {
+        font-size: 2.85vh;
+    }
+    .archive-button-left, .archive-button-right {
+        font-size: 1.1rem;
+    }
+
+    .vmorse, .kmorse {
+        font-size: 4vh;
+        margin-top: 6vh;
+    }
+    #teasertext {
+        font-size: 5rem;
+        margin-top: 12vh;
+        margin-bottom: 6vh;
+    }
+    /* Ensure Morse code text is vertical */
+#vtext, #ktext {
+
+    writing-mode: vertical-rl;
+    transform: rotate(180deg); /* Ensure text is upright */
+    font-size: inherit; /* Ensure font size is inherited from parent */
+}
+
+    .content {
+        padding-top: 8rem;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "firstText"
+            "vmorse"
+            "kmorse";
+    }
+
+    .firstText {
+        height: auto;
+        margin: 1rem 0;
+    }
+
+    .vmorse, .kmorse {
+        margin: 5rem 0;
+    }
+
+    .dashes1, .dashes2 {
+        margin-top: 2vh; /* Adjust top margin */
+    }
+
+    .dashes1 img, .dashes2 img {
+        width: 100%; /* Maximum increase width */
+        height: 2.5vh;
+    }
+
+    .downarrow {
+        margin-top: 0vh;
+        margin-left: 1rem;
+    }
+
+    
+    .downarrow img {
+        width: auto;
+        height: 6vh; /* Ensure full height */
+        margin: 0 auto;
+        padding: 0;
+        animation: jumpInfinite 1.5s infinite;
+        
+    }
+    
+
+    .content {
+        background-color: #edf2f4;
+        width: 100%;
+        padding-top: 5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr .20fr 1fr 1fr;
+        grid-auto-rows: max-content;
+        gap: 1rem; 
+        grid-template-areas: 
+            "vmorse firstText firstText firstText kmorse"
+            "dash1 dash1 image dash2 dash2"
+            "date date date date date"
+            "name1 name1 vertical-dots name2 name2" 
+            "article1 article1 vertical-dots article2 article2";
+        overflow: hidden;
+        height: auto; 
+    }
+
+}
+
+
+
+
+/* Adjustments for very small screens */
+@media (max-width: 480px) {
+    .navbar {
+        grid-template-columns: auto 1fr auto;
+        padding: 1rem;
+    }
+    .title {
+        font-size: 1.95vh;
+        margin-left: 1rem;
+    }
+    .archive-button-left, .archive-button-right {
+        font-size: 0.55rem;
+    }
+
+    .content {
+        background-color: #edf2f4;
+        width: 100%;
+        padding-top: 5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr .20fr 1fr 1fr;
+        grid-auto-rows: max-content;
+        grid-template-areas: 
+            "vmorse firstText firstText firstText kmorse"
+            "s100 s200 s300 s400 s500"
+            "dots1 dots1 image dots2 dots2"
+            "s600 s700 s800 s900 s1000"
+            "date date date date date"
+            "name1 name1 name1 name1 name1" 
+            "article1 article1 s5 s6 s7"
+            "vdots vdots vdots vdots vdots"
+            "name2 name2 name2 name2 name2"
+            "a2 a2 s17 s18 s19";
+        overflow: hidden;
+        height: auto;
+        margin-left: .5rem;
+    }
+
+    .vmorse{
+        grid-area: vmorse;
+        margin: 0rem 0;
+        font-size: 4vh;
+        margin-top: 6vh;
+    }
+
+    .firstText {
+        grid-area: firstText;
+    }
+
+    .kmorse{
+        grid-area: kmorse;
+        font-size: 4vh;
+        margin: 0; /* Remove margins on smaller screens */
+        padding: 1rem; /* Add some padding if needed */
+    
+        
+    }
+/* Ensure Morse code text is vertical */
+    #vtext, #ktext {
+
+        writing-mode: vertical-rl;
+        transform: rotate(180deg); /* Ensure text is upright */
+        font-size: inherit; /* Ensure font size is inherited from parent */
+     }
+
+  
+
+    #teasertext {
+        font-size: 2.5rem;
+        margin-top: 4vh;
+        margin-bottom: 6vh;
+        padding-right: 1rem;
+    }
+
+
+    .dots1 {
+        grid-area: dots1;
+        text-align: center;
+    }
+
+    .downarrow {
+        grid-area: image;
+        padding: 0rem;
+        margin-top: 2rem;
+        animation: bounce 2s infinite;
+    }
+
+    .dots2 {
+        grid-area: dots2;
+        text-align: center;
+        margin-right: -.4rem;
+    }
+
+    .dots1, .dots2 {
+        display:  block;
+        overflow: hidden; /* Ensure no clipping */
+    }
+
+    .dots1 img, .dots2 img {
+        width: 125px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+        
+    .downarrow img {
+        width: auto;
+        height: 8vh; /* Ensure full height */
+        display: block; /* Ensures the image is treated as a block-level element */
+        margin-left: .4rem;
+        animation: bounce 2s infinite;
+    }
+
+
+
+    
+    
+
+    .name1{
+        grid-area: name1;
+    }
+
+    .name {
+        font-family: "DotGothic16", sans-serif;
+        font-size: 3rem;
+        font-weight: 200;
+        color: #2b2d42;
+        margin: 0;
+        padding: 1rem;
+        text-align: center;
+        text-decoration: underline;
+    }
+    
+    .article1 {
+        grid-area: article1;
+    }
+    
+    .horz-dots {
+        grid-area: vdots;
+        align-items: center;
+        display: block;
+        font-family: "Jacquarda Bastarda 9", serif;
+        color: #ef233c;
+        text-align: center;
+    }
+    
+    .dotsH {
+        margin: 0rem;
+        line-height: 1; 
+        font-size: 4rem; /* This is the font size to adjust */
+        color: #ef233c;
+        overflow: hidden;
+    }
+
+    .vertical-dots {
+        display: none;
+    }
+
+    .name2 {
+        grid-area: name2; 
+    }
+
+    .article2 {
+        grid-area: a2;
+        margin-left: 2rem;
+    }
+
+    .article-card {
+        background: #edf2f4;
+        padding: 1rem;
+        border: 2.5px dashed #edf2f4;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 280%; /* Adjust width to make the cards wider and thinner */
+        max-width: 600px; /* Set a max-width for the cards */
+        margin: 0 auto; /* Center the cards */
+        box-sizing: border-box; /* Ensure padding and border are included in the width */
+    }
+    
+    .article-card:hover {
+        border: 2.5px dashed #ef233c; /* Dashed border on hover */
+        border-radius: 0px; /* Oval border on hover */
+        transform: translateY(-5px);
+        animation: dropShadow .3s 1 forwards;
+    }
+    
+    .article-title {
+        font-family: 'Cousine', monospace;
+        font-size: .75rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+        padding-right: 1rem;
+    }
+    
+    .article-excerpt {
+        font-family: 'Cousine', monospace;
+        font-size: 0.6rem;
+        color: #555;
+        margin-bottom: 1rem;
+        padding-right: 2rem;
+    }
+    
+    .article-date {
+        font-family: 'Cousine', monospace;
+        font-size: 0.6rem;
+        color: #999;
+    }
+    
+    .article-image {
+        border: 2px dashed #000; /* Red outlined box */
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px; /* Adjust as needed */
+        height: 70px; /* Adjust as needed */
+        margin-top: .75rem; /* Remove any top margin */
+        padding-top: 0; /* Remove any top padding */
+
+    }
+    .article-card {
+        align-items: flex-start; /* Aligns the contents to the top */
+        margin-left: 1rem;
+    }
+    
+    .article-image img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+    }
+
+    .articleContents {
+        margin-bottom: 1rem; /* Increase this value to add more space */
+    }
+   
+    
+}
+
+
+body {
+    margin: 0;
+}
+
+/*
+.articles-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #f7f7f7;
+}
+
+
+
+.article-column {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+
+
+
+
+
+
+.archiveContent {
+    background-color: #edf2f4;
+    width: 100%;
+    height: 200vh;
+    padding-top: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: max-content;
+    gap: 1rem; 
+    grid-template-areas: 
+        "name name name"
+        "content content content";
+    overflow: hidden;
+}
+#name {
+    grid-area: name;
+    font-family: "DotGothic16", sans-serif;
+    font-size: 3rem;
+    font-weight: 200;
+    color: #2b2d42;
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+*/
+
+a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color from parent */
+}
+
+
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }

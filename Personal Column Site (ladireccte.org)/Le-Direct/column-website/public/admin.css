@@ -1,0 +1,168 @@
+/* Navbar styles */
+.navbar {
+    width: 100%;
+    background-color: #ef233c;
+    position: fixed;
+    text-align: center;
+    z-index: 8;
+    top: 0;
+    left: 0;
+}
+
+.title {
+    font-family: "Jacquarda Bastarda 9", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #edf2f4;
+    font-size: 8vh;
+    margin: 0;
+}
+
+.navText {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .navLinks {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar .navLinks button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.navbar .navLinks button:hover {
+    background-color: #555;
+}
+
+.content {
+    padding: 20px;
+    margin-top: 120px;
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+form input, form select, form textarea, .quill-editor {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+#columns-list {
+    margin-top: 20px;
+}
+
+#columns-list div {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#columns-list h3 {
+    margin-top: 0;
+}
+
+#columns-list button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#columns-list button:hover {
+    background-color: #c82333;
+}
+
+a {
+    text-decoration: none; /* Ensure no underline on links */
+    color: inherit; /* Ensure link color inherits from parent */
+}
+
+.quill-editor {
+    height: 300px; /* Adjust height as needed */
+}
+
+.ql-toolbar {
+    background: #f3f3f3;
+    border: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+}
+
+.ql-container {
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+}
+
+/* Ensure buttons are visible and properly styled */
+#submit-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#submit-button:hover {
+    background-color: #218838;
+}
+
+#cancel-edit-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 10px; /* Add some space between the buttons */
+}
+
+#cancel-edit-button:hover {
+    background-color: #c82333;
+}
+
+/* Ensure all buttons are displayed inline */
+form button {
+    display: inline-block;
+    margin-top: 10px;
+}

@@ -1,9 +1,26 @@
+# Python artifacts
 __pycache__/
 *.pyc
+
+# OS junk
 .DS_Store
+
+# Outputs
 results/
 *.csv
 *.log
+
+# Virtual envs
 .venv/
 env/
 venv/
+
+# Node/dependency leftovers
+node_modules/
+node_modules 2/
+
+# Secrets
+*.env
+
+# Misc
+*.json

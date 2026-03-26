@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+
+  {% if profile_form.errors or edu_formset.errors or work_formset.errors %}
+    <div class="alert alert-danger">
+      <strong>There are issues with your profile. Please fix them:</strong>
+      <ul class="mb-0">
+        {% for field, errors in profile_form.errors.items %}
+          {% for error in errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        {% endfor %}
+        {% for form in edu_formset.forms %}
+          {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+        {% endfor %}
+        {% for form in work_formset.forms %}
+          {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+
+    <!-- Profile basics -->
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <h4>👤 Basic Info</h4>
+
+        <div class="mb-3">
+          <label class="form-label" for="{{ profile_form.headline.id_for_label }}">Headline</label>
+          {{ profile_form.headline }}
+          {{ profile_form.headline.errors }}
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="{{ profile_form.bio.id_for_label }}">Bio</label>
+          {{ profile_form.bio }}
+          {{ profile_form.bio.errors }}
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="{{ profile_form.location.id_for_label }}">Location</label>
+          {{ profile_form.location }}
+          {{ profile_form.location.errors }}
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="{{ profile_form.skills.id_for_label }}">Skills (comma-separated)</label>
+          {{ profile_form.skills }}
+          {{ profile_form.skills.errors }}
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="{{ profile_form.links.id_for_label }}">Links (comma-separated URLs)</label>
+          {{ profile_form.links }}
+          {{ profile_form.links.errors }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy -->
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <h4>🔒 Privacy</h4>
+        <p class="text-muted mb-3">Control what non-owners (e.g., recruiters) can see on your profile.</p>
+
+        <div class="form-check mb-2">
+          {{ profile_form.is_public }}
+          <label class="form-check-label" for="{{ profile_form.is_public.id_for_label }}">
+            Public profile
+          </label>
+          {{ profile_form.is_public.errors }}
+        </div>
+
+        <div class="form-check mb-2">
+          {{ profile_form.show_email }}
+          <label class="form-check-label" for="{{ profile_form.show_email.id_for_label }}">
+            Show email
+          </label>
+          {{ profile_form.show_email.errors }}
+        </div>
+
+        <div class="form-check mb-2">
+          {{ profile_form.show_links }}
+          <label class="form-check-label" for="{{ profile_form.show_links.id_for_label }}">
+            Show links
+          </label>
+          {{ profile_form.show_links.errors }}
+        </div>
+
+        <div class="form-check mb-2">
+          {{ profile_form.show_education }}
+          <label class="form-check-label" for="{{ profile_form.show_education.id_for_label }}">
+            Show education
+          </label>
+          {{ profile_form.show_education.errors }}
+        </div>
+
+        <div class="form-check mb-2">
+          {{ profile_form.show_work }}
+          <label class="form-check-label" for="{{ profile_form.show_work.id_for_label }}">
+            Show work experience
+          </label>
+          {{ profile_form.show_work.errors }}
+        </div>
+
+        <div class="form-check">
+          {{ profile_form.show_skills }}
+          <label class="form-check-label" for="{{ profile_form.show_skills.id_for_label }}">
+            Show skills
+          </label>
+          {{ profile_form.show_skills.errors }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <h4>🎓 Education</h4>
+        {{ edu_formset.management_form }}
+        <div id="edu-forms">
+          {% for form in edu_formset %}
+            <div class="border p-3 mb-3 edu-form">
+              {{ form.as_p }}
+            </div>
+          {% endfor %}
+        </div>
+        <!-- hidden empty form -->
+        <div id="empty-edu-form" class="d-none">
+          <div class="border p-3 mb-3 edu-form">
+            {{ edu_formset.empty_form.as_p }}
+          </div>
+        </div>
+        <button type="button" id="add-edu" class="btn btn-outline-secondary btn-sm mt-2">
+          + Add Another Education
+        </button>
+      </div>
+    </div>
+
+    <!-- Work -->
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <h4>💼 Work Experience</h4>
+        {{ work_formset.management_form }}
+        <div id="work-forms">
+          {% for form in work_formset %}
+            <div class="border p-3 mb-3 work-form">
+              {{ form.as_p }}
+            </div>
+          {% endfor %}
+        </div>
+        <!-- hidden empty form -->
+        <div id="empty-work-form" class="d-none">
+          <div class="border p-3 mb-3 work-form">
+            {{ work_formset.empty_form.as_p }}
+          </div>
+        </div>
+        <button type="button" id="add-work" class="btn btn-outline-secondary btn-sm mt-2">
+          + Add Another Job
+        </button>
+      </div>
+    </div>
+
+    <!-- Save button -->
+    <div class="mt-5">
+      <button type="submit" class="btn btn-primary w-100">Save All Changes</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  function setupDynamicForm(prefix, addBtnId, formContainerId, emptyFormId) {
+    const totalFormsInput = document.querySelector(`#id_${prefix}-TOTAL_FORMS`);
+    const container = document.getElementById(formContainerId);
+    const addBtn = document.getElementById(addBtnId);
+    const emptyFormDiv = document.getElementById(emptyFormId).innerHTML;
+
+    addBtn.addEventListener("click", () => {
+      const formIndex = parseInt(totalFormsInput.value);
+      let newFormHtml = emptyFormDiv.replace(/__prefix__/g, formIndex);
+      container.insertAdjacentHTML("beforeend", newFormHtml);
+      totalFormsInput.value = formIndex + 1;
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setupDynamicForm("education", "add-edu", "edu-forms", "empty-edu-form");
+    setupDynamicForm("work_experience", "add-work", "work-forms", "empty-work-form");
+  });
+</script>
+{% endblock %}
