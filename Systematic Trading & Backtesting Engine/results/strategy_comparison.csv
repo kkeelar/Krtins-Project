@@ -1,0 +1,29 @@
+strategy_name,parameters,final_value,avg_return,volatility,sharpe
+long_only_momentum,{'window': 50},298165.179049,0.00163,0.019068,1.356685
+momentum,{'window': 100},157159.481886,0.000746,0.010308,1.148692
+momentum_vol_targeted,{'window': 100},153452.347234,0.000704,0.009811,1.139696
+momentum,{'window': 50},149951.660697,0.000631,0.010419,0.961688
+vol_scaled_momentum,"{'window': 50, 'vol_window': 20}",136453.340949,0.000493,0.009979,0.783874
+momentum_vol_targeted,{'window': 50},129813.68917,0.000414,0.009147,0.718454
+vol_scaled_momentum,"{'window': 50, 'vol_window': 10}",127272.065657,0.000392,0.009753,0.637525
+long_only_momentum,{'window': 10},147962.666261,0.000725,0.020287,0.567477
+long_only_momentum,{'window': 20},133144.991563,0.000588,0.020424,0.457407
+breakout,{'window': 100},89927.078562,-1.5e-05,0.015837,-0.015222
+momentum_vol_targeted,{'window': 10},85750.994939,-0.000153,0.010145,-0.238987
+momentum,{'window': 10},85196.629914,-0.00016,0.010263,-0.247843
+momentum,{'window': 20},85309.109481,-0.000163,0.01007,-0.257609
+momentum_vol_targeted,{'window': 20},84718.294529,-0.000175,0.009866,-0.281336
+vol_scaled_momentum,"{'window': 10, 'vol_window': 10}",78444.750142,-0.000277,0.009641,-0.456448
+vol_scaled_momentum,"{'window': 20, 'vol_window': 20}",77016.000158,-0.000309,0.009452,-0.518116
+vol_scaled_momentum,"{'window': 10, 'vol_window': 20}",75763.636026,-0.000328,0.009721,-0.535796
+vol_scaled_momentum,"{'window': 20, 'vol_window': 10}",73644.613022,-0.000369,0.009483,-0.617899
+breakout,{'window': 50},47322.365152,-0.000806,0.018989,-0.673784
+momentum_vol_targeted,{'window': 5},66269.852259,-0.000499,0.00973,-0.814162
+momentum,{'window': 5},62665.482154,-0.000573,0.009835,-0.924058
+mean_reversion,"{'window': 20, 'z_threshold': 2}",43967.16753,-0.000976,0.014918,-1.038825
+breakout,{'window': 20},28934.792566,-0.001411,0.02129,-1.051882
+mean_reversion,"{'window': 10, 'z_threshold': 2}",49976.218658,-0.000845,0.01209,-1.1098
+mean_reversion,"{'window': 5, 'z_threshold': 1}",15060.938943,-0.00229,0.020759,-1.750837
+mean_reversion,"{'window': 10, 'z_threshold': 1}",8773.54959,-0.003003,0.020725,-2.300064
+mean_reversion,"{'window': 20, 'z_threshold': 1}",6118.412638,-0.003493,0.019949,-2.779841
+mean_reversion,"{'window': 5, 'z_threshold': 2}",100000.0,0.0,0.0,
