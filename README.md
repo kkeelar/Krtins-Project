@@ -4,6 +4,17 @@ Collection of selected software engineering projects demonstrating full-stack, a
 
 ---
 
+## Systematic Trading & Backtesting Engine
+**Tech:** Python, C++, Pandas, NumPy, Pybind11
+
+- Built an end-to-end systematic trading pipeline (data → signals → portfolio construction → execution → evaluation).
+- Implemented a multithreaded C++ execution engine with order queues, latency tracking, and strict risk constraints (cash, leverage).
+- Upgraded signals from discrete {-1,0,1} to continuous scoring with normalized portfolio weighting.
+- Developed multi-factor, multi-horizon strategies combining momentum, mean reversion, and volatility signals.
+- Added dynamic strategy weighting using rolling Sharpe (no lookahead) to adapt allocations over time.
+- Extended execution realism with partial fills, market impact, order types, and position limits.
+- Benchmarked performance with parameter sweeps, stress tests, and detailed metrics (Sharpe, CAGR, drawdown).
+
 ## LaDireccte.org  
 **Tech:** React, Node.js, Firebase, GitHub Actions, Postgres  
 
@@ -30,7 +41,7 @@ Collection of selected software engineering projects demonstrating full-stack, a
 ---
 
 ## Tech Stack Highlights  
-**Languages:** Python, JavaScript, SQL, HTML/CSS  
+**Languages:** Python, JavaScript, SQL, HTML/CSS, C++ 
 **Frameworks:** React, Django, Node.js  
 **Tools:** Firebase, Docker, GitHub Actions, Selenium, Postgres  
 **Concepts:** Full-stack design, CI/CD, web automation, geospatial mapping
